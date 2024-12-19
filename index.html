@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChemSpark</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="./assets/atom.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <h1>ChemSpark</h1>
+                <ul id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Simulation.html">Simulation</a></li>
+                   <!-- <li><a href="instructions.html">Simulation</a></li>
+                     <li><a href="facts.html">Facts&Quotes</a></li>
+                    <li><a href="memes.html">MemeGallery</a></li>-->
+                </ul>
+                <button id="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+    <div class="hero">
+        <video autoplay muted loop>
+            <source src="./assets/bg3.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Chem<span>Spark</span></h1>
+            <p>Explore chemistry beyond the classroom.</p>
+        </div>
+    </div>
+
+
+    <main>
+   <!-- <section id="periodic-table" class="container">
+        <h2>Interactive Periodic Table</h2>
+        <div class="grid periodic-table" id="periodicTable"></div>
+    </section>-->
+
+    <section id="concepts" class="container">
+        <h2>About The Project...</h2>
+        <div class="tabs">
+            <div class="tab-list" role="tablist">
+                <button class="tab active" role="tab" aria-selected="true" aria-controls="atomic-structure">What..??</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="chemical-bonding">Why..??</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="chemical-reactions"> By whom..??</button>
+            </div>
+            
+             <div id="atomic-structure" class="tab-content active" role="tabpanel">
+                <div class="concept">
+                    <div class="concept-image">
+                        <img src="./assets/fp2.jpeg" alt="Atomic Structure">
+                    </div>
+                    <div>
+                        <h3><b> What is the Project..?</b></h3>
+                        <p>
+
+                            This project involves the preparation of Bakelite, a synthetic polymer, through a chemical reaction between phenol and formaldehyde. The experiment demonstrates the principles of polymerization and the properties of thermosetting plastics.
+                             </p>
+                    </div>
+                </div>
+            </div>
+            <div id="chemical-bonding" class="tab-content" role="tabpanel">
+                <div class="concept">
+                    <div class="concept-image">
+                        <img src="./assets/fp2.jpeg" alt="Chemical Bonding">
+                    </div>
+                    <div>
+                        <h3> <b>Why this Project..? </b></h3>
+                        <p>
+
+                            This project is significant because Bakelite was the first commercially produced synthetic polymer, revolutionizing the plastics industry. By preparing Bakelite, we can understand the chemical processes involved in its production, its properties, and its applications. This project also helps develop laboratory skills, such as measuring, mixing, and heating chemicals.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="chemical-reactions" class="tab-content" role="tabpanel">
+                <div class="concept">
+                    <div class="concept-image">
+                        <img src="./assets/fp2.jpeg" alt="Chemical Reactions">
+                    </div>
+                    <div>
+                        <h3><b>< By Whom it is Made..?</b></h3>
+                        <p>
+
+
+                 This project is designed and executed by student,
+                <li>Madhure Snehal</li>
+                <li>Kale Aditi</li>
+                <li>Pawar Priya</li>
+                <li>Patil Harshal</li>
+
+                under the guidance of Prof. Bhavsar Falguni ma'am
+
+                Also Thanks to Aviraj Kale for guiding us for this project..
+
+                     
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--
+    <section id="facts" class="container">
+        <h2>Chemistry Facts</h2>
+        <div class="grid facts" id="factContainer"></div>
+    </section>-->
+</main>
+   
+
+
+
+
+    <footer>
+        <div class="container">
+          <!--  <p>&copy; 2023 Chemistry World. All rights reserved.</p> -->
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById("menu-toggle");
+            const menu = document.getElementById("menu");
+        
+            menuToggle.addEventListener("click", () => {
+                menu.classList.toggle("show");
+            });
+        });
+        
+    </script>
+    <!-- Script for new component  -->
+    <script>
+        const elements = [
+            { symbol: 'H', name: 'Hydrogen', number: 1, category: 'Nonmetal' },
+            { symbol: 'He', name: 'Helium', number: 2, category: 'Noble Gas' },
+            { symbol: 'Li', name: 'Lithium', number: 3, category: 'Alkali Metal' },
+            { symbol: 'Be', name: 'Beryllium', number: 4, category: 'Alkaline Earth Metal' },
+            { symbol: 'B', name: 'Boron', number: 5, category: 'Metalloid' },
+            { symbol: 'C', name: 'Carbon', number: 6, category: 'Nonmetal' },
+            { symbol: 'N', name: 'Nitrogen', number: 7, category: 'Nonmetal' },
+            { symbol: 'O', name: 'Oxygen', number: 8, category: 'Nonmetal' },
+            { symbol: 'F', name: 'Fluorine', number: 9, category: 'Halogen' },
+            { symbol: 'Ne', name: 'Neon', number: 10, category: 'Noble Gas' },
+        ];
+
+        const facts = [
+            "Water is the only natural substance found in all three states - solid, liquid, and gas - on Earth.",
+            "The most abundant element in the universe is hydrogen.",
+            "The human body contains enough carbon to make 900 pencils.",
+            "Gold is the only metal that is yellow in color.",
+            "Diamonds are the hardest natural substance on Earth."
+        ];
+
+        /*function createPeriodicTable() {
+            const periodicTable = document.getElementById('periodicTable');
+            elements.forEach(element => {
+                const elementDiv = document.createElement('div');
+                elementDiv.className = 'card element';
+                elementDiv.innerHTML = `
+                    <div class="element-symbol">${element.symbol}</div>
+                    <div class="element-name">${element.name}</div>
+                    <div class="element-category">${element.category}</div>
+                `;
+                periodicTable.appendChild(elementDiv);
+            });
+        }*/
+
+        /*function createFactCards() {
+            const factContainer = document.getElementById('factContainer');
+            facts.forEach(fact => {
+                const factDiv = document.createElement('div');
+                factDiv.className = 'card';
+                factDiv.textContent = fact;
+                factContainer.appendChild(factDiv);
+            });
+        }*/
+
+        function setupTabs() {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
+
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    const targetId = tab.getAttribute('aria-controls');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        }
+        
+   
+
+        document.addEventListener('DOMContentLoaded', () => {
+            //createPeriodicTable();
+            //createFactCards();
+            setupTabs();
+        });
+        
+    </script>
+</body>
+</html>

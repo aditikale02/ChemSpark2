@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry World - Meme Gallery</title>
+    <link rel="stylesheet" href="memes.css">
+    <link rel="shortcut icon" href="./assets/atom.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <h1>ChemSpark</h1>
+                <ul id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="instructions.html">Instructions</a></li>
+                    <li><a href="cards.html">StudyMaterials</a></li>
+                    <li><a href="facts.html">Facts&Quotes</a></li>
+                    <li><a href="memes.html">MemeGallery</a></li>
+                </ul>
+                <button id="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+        </header>
+    <main class="main-container">
+        <h2 class="page-heading">
+            Memeistry: Where Science Gets Hilarious
+        </h2>
+            <hr>
+
+        <div class="pin_container">
+        
+   
+            <div class="card card_large" style="background-image: url('./assets/meme9.jpg');"></div>
+            <div class="card card_large" style="background-image: url('./assets/meme10.jpg');"></div>
+            <div class="card card_large" style="background-image: url('./assets/meme11.jpg');"></div>
+            <div class="card card_large" style="background-image: url('./assets/meme12.jpg');"></div>
+            <div class="card card_large" style="background-image: url('./assets/meme13.jpg');"></div>
+            <div class="card card_large" style="background-image: url('./assets/meme14.jpg');"></div>
+            <div class="card card_large" style="background-image: url('/assets/meme1.jpg');"></div>
+            <div class="card card_large" style="background-image: url(/assets/meme2.jpg');"></div>
+            <div class="card card_large" style="background-image: url('/assets/meme3.jpg');"></div>
+            <div class="card card_large" style="background-image: url('/assets/meme4.jpg');"></div>
+            <div class="card card_large" style="background-image: url('/assets/meme5.jpg');"></div>
+            <div class="card card_large" style="background-image: url('/assets/meme6.jpg');"></div>
+            <div class="card card_large" style="background-image: url('/assets/meme7.jpg');"></div>
+            <div class="card card_large" style="background-image: url('/assets/meme8.jpg');"></div>
+          
+            <!-- Add more cards as needed -->
+        </div>
+
+        <div class="overlay" id="overlay">
+            <div class="expanded-card" id="expandedCard"></div>
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <div class="zoom-controls">
+                <button class="zoom-btn" id="zoomOut">-</button>
+                <button class="zoom-btn" id="zoomIn">+</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById("menu-toggle");
+            const menu = document.getElementById("menu");
+        
+            menuToggle.addEventListener("click", () => {
+                menu.classList.toggle("show");
+            });
+        });
+        
+    </script>
+    <script>
+        const cards = document.querySelectorAll('.card');
+        const overlay = document.getElementById('overlay');
+        const expandedCard = document.getElementById('expandedCard');
+        const closeBtn = document.getElementById('closeBtn');
+        const zoomInBtn = document.getElementById('zoomIn');
+        const zoomOutBtn = document.getElementById('zoomOut');
+
+        let currentScale = 1;
+        const SCALE_FACTOR = 0.2;
+        const MAX_SCALE = 3;
+        const MIN_SCALE = 0.5;
+
+        cards.forEach((card) => {
+            card.addEventListener('click', () => {
+                overlay.classList.add('active');
+                expandedCard.style.backgroundImage = card.style.backgroundImage;
+                currentScale = 1;
+                updateScale();
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.remove('active');
+            }
+        });
+
+        // Zoom functionality
+        zoomInBtn.addEventListener('click', () => {
+            if (currentScale < MAX_SCALE) {
+                currentScale += SCALE_FACTOR;
+                updateScale();
+            }
+        });
+
+        zoomOutBtn.addEventListener('click', () => {
+            if (currentScale > MIN_SCALE) {
+                currentScale -= SCALE_FACTOR;
+                updateScale();
+            }
+        });
+
+        function updateScale() {
+            expandedCard.style.transform = `scale(${currentScale})`;
+        }
+
+        // Add mouse wheel zoom support
+        expandedCard.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            if (e.deltaY < 0 && currentScale < MAX_SCALE) {
+                currentScale += SCALE_FACTOR;
+            } else if (e.deltaY > 0 && currentScale > MIN_SCALE) {
+                currentScale -= SCALE_FACTOR;
+            }
+            updateScale();
+        });
+    </script>
+</body>
+</html>

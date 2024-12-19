@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry World - Interactive Cards</title>
+    <link rel="stylesheet" href="cards.css">
+    <link rel="shortcut icon" href="./assets/atom.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div>
+            <nav>
+                <h1>ChemSpark</h1>
+                <ul id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Simulation.html" >Simulation</a></li>
+                  <!--
+                    <li><a href="instructions.html">Instructions</a></li>
+                      <li><a href="facts.html">Facts&Quotes</a></li>
+                    <li><a href="memes.html">MemeGallery</a></li>-->
+                </ul>
+                <button id="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="interactive-container">
+            <h2 class="text-center mb-2">Chemistry Concepts</h2>
+            <div class="grid">
+               <!-- <div class="card">
+                    <img src="./assets/sm1.jpeg" alt="Atoms">
+                    <h3>UNIT-1</h3>
+                    <p>Water Technology and Green Chemistry</p>
+                    <button>Explore Here</button>
+                </div>
+                <div class="card">
+                    <img src="./assets/sm2.jpeg" alt="Molecules">
+                    <h3>UNIT-2</h3>
+                    <p>Fuels and combustion</p>
+                    <button>Explore Here</button>
+                </div>
+                <div class="card">
+                    <img src="./assets/sm3.jpeg" alt="Chemical Reactions">
+                    <h3>UNIT-3</h3>
+                    <p>Corrosion and Corrosion control</p>
+                    <button>Explore Here</button>
+                </div>-->
+                <div class="card">
+                    <img   src="./assets/sm4.jpeg" alt="Chemical Reactions">
+                    <h3>UNIT-4</h3>
+                    <p>Chemistry of Polymers and Novel Carbon Compounds</p>
+                    <button><a >Explore Here</a></button>
+                </div>
+               <!--<div class="card">
+                    <img src="./assets/beaker.jpg" alt="Chemical Reactions">
+                    <h3>Chemical Reactions</h3>
+                    <p>The process that leads to the transformation of one set of chemical substances to another.</p>
+                    <button>Discover</button>
+                </div>
+                <div class="card">
+                    <img src="./assets/beaker.jpg" alt="Chemical Reactions">
+                    <h3>Chemical Reactions</h3>
+                    <p>The process that leads to the transformation of one set of chemical substances to another.</p>
+                    <button>Discover</button>
+                </div>--> 
+             
+            </div>
+        </div>
+    </main>
+    
+   <!-- <footer>
+        <div class="container">
+            <p>&copy; 2023 Chemistry World. All rights reserved.</p>
+        </div>
+    </footer>-->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById("menu-toggle");
+            const menu = document.getElementById("menu");
+        
+            menuToggle.addEventListener("click", () => {
+                menu.classList.toggle("show");
+            });
+        });
+        
+    </script>
+</body>
+</html>

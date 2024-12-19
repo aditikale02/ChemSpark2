@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Project Video Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Simulation.css">
+    <style>
+        :root {
+            --primary-color: #4a148c;
+            --secondary-color: #424242;
+            --text-color: #333;
+            --background-color: #f5f5f5;
+            --accent-color: #7c43bd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            font-weight: 300;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .video-container:hover .video-controls {
+            opacity: 1;
+        }
+
+        .progress-bar {
+            flex-grow: 1;
+            height: 5px;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--accent-color);
+            width: 0;
+        }
+
+        .video-controls button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0 10px;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+        }
+
+        .volume-slider {
+            width: 0;
+            height: 5px;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: width 0.3s;
+            overflow: hidden;
+        }
+
+        .volume-control:hover .volume-slider {
+            width: 50px;
+        }
+
+        .volume-level {
+            height: 100%;
+            background-color: var(--accent-color);
+            width: 100%;
+        }
+
+        .project-info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .project-info h2 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .project-info p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <h1>ChemSpark</h1>
+                <ul id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Simulation.html">Simulation</a></li>
+                   <!-- <li><a href="instructions.html">Simulation</a></li>
+                     <li><a href="facts.html">Facts&Quotes</a></li>
+                    <li><a href="memes.html">MemeGallery</a></li>-->
+                </ul>
+                <button id="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="heading">
+            <h1>Project Showcase</h1>
+            <p class="subtitle">Elevating Innovation Through Cutting-Edge Solutions</p>
+        </div>
+
+        <div class="video-container">
+            <video id="projectVideo">
+                <source src="./assets/project-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-controls">
+                <button id="playPauseBtn" aria-label="Play">
+                    <i class="fas fa-play"></i>
+                </button>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <div class="volume-control">
+                    <button id="muteBtn" aria-label="Mute">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="volume-slider">
+                        <div class="volume-level" id="volumeLevel"></div>
+                    </div>
+                </div>
+                <button id="fullscreenBtn" aria-label="Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="project-info">
+            <h2>About This Project</h2>
+            <p>Explore our latest project through an engaging video presentation! This video provides an in-depth look at our work, highlighting key features, innovations, and the journey behind its creation. With a captivating backline and seamless visuals, it’s designed to deliver a compelling and immersive experience. Watch now to see how we bring ideas to life!</p>
+            <div class="tags">
+                <span class="tag">Innovation</span>
+                <span class="tag">Technology</span>
+                <span class="tag">Design</span>
+                <span class="tag">Future</span>
+                <span class="tag">Efficiency</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('projectVideo');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const progress = document.getElementById('progress');
+        const progressBar = document.querySelector('.progress-bar');
+        const volumeLevel = document.getElementById('volumeLevel');
+        const volumeSlider = document.querySelector('.volume-slider');
+
+        function togglePlayPause() {
+            if (video.paused) {
+                video.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                playPauseBtn.setAttribute('aria-label', 'Pause');
+            } else {
+                video.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playPauseBtn.setAttribute('aria-label', 'Play');
+            }
+        }
+
+        function toggleMute() {
+            video.muted = !video.muted;
+            muteBtn.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+            muteBtn.setAttribute('aria-label', video.muted ? 'Unmute' : 'Mute');
+            updateVolumeLevel();
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.mozRequestFullScreen) {
+                    video.mozRequestFullScreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+                fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+                fullscreenBtn.setAttribute('aria-label', 'Exit Fullscreen');
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                fullscreenBtn.setAttribute('aria-label', 'Fullscreen');
+            }
+        }
+
+        function updateProgress() {
+            const value = (video.currentTime / video.duration) * 100;
+            progress.style.width = value + '%';
+        }
+
+        function seek(e) {
+            const rect = progressBar.getBoundingClientRect();
+            const pos = (e.pageX - rect.left) / progressBar.offsetWidth;
+            video.currentTime = pos * video.duration;
+        }
+
+        function updateVolumeLevel() {
+            volumeLevel.style.width = (video.muted ? 0 : video.volume * 100) + '%';
+        }
+
+        function changeVolume(e) {
+            const rect = volumeSlider.getBoundingClientRect();
+            const pos = (e.pageX - rect.left) / volumeSlider.offsetWidth;
+            video.volume = Math.max(0, Math.min(1, pos));
+            video.muted = false;
+            muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+            muteBtn.setAttribute('aria-label', 'Mute');
+            updateVolumeLevel();
+        }
+
+        playPauseBtn.addEventListener('click', togglePlayPause);
+        muteBtn.addEventListener('click', toggleMute);
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
+        video.addEventListener('timeupdate', updateProgress);
+        progressBar.addEventListener('click', seek);
+        volumeSlider.addEventListener('click', changeVolume);
+
+        video.addEventListener('ended', function() {
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            playPauseBtn.setAttribute('aria-label', 'Play');
+        });
+    </script>
+</body>
+</html>
+

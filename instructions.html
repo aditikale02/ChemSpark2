@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry World - Instructions</title>
+    <link rel="stylesheet" href="instructions.css">
+    <link rel="shortcut icon" href="./assets/atom.png" type="image/x-icon">
+  
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <h1>ChemSpark</h1>
+                <ul id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="instructions.html">Simulation</a></li>
+                    <!-- <li><a href="cards.html">StudyMaterials</a></li>
+                   <li><a href="facts.html">Facts&Quotes</a></li>
+                    <li><a href="memes.html">MemeGallery</a></li> -->
+                </ul>
+                <button id="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+    <main>
+
+        <div class="container-instructions"> 
+            <h2 class="text-center mb-2">Chemistry Safety Instructions</h2>
+            <div class="carousel">
+                <img class="carousel-item active">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/1.png" alt="introduction to lab saftey" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/2.png" alt="alert" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/3.png" alt="silence" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/4.png" alt="jewllery" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/5.png" alt="aid" height="300px" width="300px">
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/6.png" alt="atention" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/7.png" alt="googles" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/8.png" alt="shoes" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/9.png" alt="appartus" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/10.png" alt="chew" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/11.png" alt="hands " height="300px" width="300px">
+                  
+                </div> <div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/12.png" alt="do not use mobile" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/13.png" alt="hairs" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/14.png" alt="gloves" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/15.png" alt="unwell" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/16.png" alt="clean" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/17.png" alt="noactivity" height="300px" width="300px">
+
+                </div><div class="carousel-item">
+                    <h3>!!ALWAYS REMEMBER!!</h3>
+                    <img src="./assets/18.png" alt="teacher" height="300px" width="300px">
+
+
+                <div class="carousel-nav">
+                    <button id="prevBtn">Previous</button>
+                    <button id="nextBtn">Next</button>
+                </div>
+            </div>
+        </div> 
+    </main>
+    
+     <!--Script for the navbar-->
+    
+ <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById("menu-toggle");
+            const menu = document.getElementById("menu");
+        
+            menuToggle.addEventListener("click", () => {
+                menu.classList.toggle("show");
+            });
+        });
+        
+    </script>
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const items = carousel.querySelectorAll('.carousel-item');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        function showItem(index) {
+            items[currentIndex].classList.remove('active');
+            items[index].classList.add('active');
+            currentIndex = index;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            let index = (currentIndex - 1 + items.length) % items.length;
+            showItem(index);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            let index = (currentIndex + 1) % items.length;
+            showItem(index);
+        });
+    </script> 
+
+
+</body>
+</html>
